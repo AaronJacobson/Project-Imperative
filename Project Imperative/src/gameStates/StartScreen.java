@@ -5,25 +5,26 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.gui.TextField;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class StartScreen extends BasicGameState{
+public class StartScreen extends BasicGameState {
+	private TextField textInput;
 	private Image background;
-	public void init(GameContainer arg0, StateBasedGame arg1)
-			throws SlickException {
+	// private Graphics graphics = new Graphics();
+	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
+			// textInput = new TextField(container, null, 200, 50, 100, 20);
 			background = new Image("slick/testdata/Feild Background.png"); 
+			// textInput.render(container, graphics);
 	}
 
-	public void render(GameContainer arg0, StateBasedGame arg1, Graphics g)
-			throws SlickException {
+	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
 		g.setColor(Color.blue);
-		g.drawString("herro world!", 300, 300);
 		background.draw();
 	}
 
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2)
-			throws SlickException {
+	public void update(GameContainer container, StateBasedGame arg1, int arg2) throws SlickException {
 		
 	}
 

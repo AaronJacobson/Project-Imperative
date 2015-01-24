@@ -1,11 +1,16 @@
 package game;
 
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+
+
 public class GameElement {
 	protected Board BOARD;
 	protected String NAME = "Larry";
+	protected Color COLOR;
 	
-	protected int LOCATION_X = 200;
-	protected int LOCATION_Y = 200;
+	protected int LOCATION_X = 240;
+	protected int LOCATION_Y = 340;
 	
 	protected int TOP_LINE;
 	protected int RIGHT_LINE;
@@ -21,6 +26,7 @@ public class GameElement {
 		updateBounds();
 		BOARD = board;
 		board.addElement(this);
+		COLOR = Color.darkGray;
 	}
 	
 	public GameElement(Board board, int sizeX, int sizeY) {
@@ -29,6 +35,7 @@ public class GameElement {
 		updateBounds();
 		BOARD = board;
 		board.addElement(this);
+		COLOR = Color.darkGray;
 	}
 	
 	public GameElement(Board board, int sizeX, int sizeY, int locationX, int locationY) {
@@ -39,6 +46,7 @@ public class GameElement {
 		updateBounds();
 		BOARD = board;
 		board.addElement(this);
+		COLOR = Color.darkGray;
 	}
 
 	public GameElement(Board board, int size, int locationX, int locationY) {
@@ -49,6 +57,7 @@ public class GameElement {
 		updateBounds();
 		BOARD = board;
 		board.addElement(this);
+		COLOR = Color.darkGray;
 	}
 	
 	private void updateBounds() {
@@ -76,6 +85,15 @@ public class GameElement {
 		return output;
 	}
 	
+	public void draw(Graphics g) {
+		g.setColor(COLOR);
+		g.fillRect(getLocationX(), getLocationY(), getSizeX(), getSizeY());
+	}
+	
+	public void setColor(Color color) {
+		COLOR = color;
+	}
+	
 //-----------------------------------------------------------------------------------------------
 	
 	public int getLocationX() {
@@ -97,7 +115,34 @@ public class GameElement {
 	}
 	
 //-----------------------------------------------------------------------------------------------	
-
+	
+	public int getSizeX() {
+		return SIZE_X;
+	}
+		
+	public int getSizeY() {
+		return SIZE_Y;
+	}
+		
+//-----------------------------------------------------------------------------------------------	
+	
+	public int getTopLine() {
+		return TOP_LINE;
+	}
+		
+	public int getRightLine() {
+		return RIGHT_LINE;
+	}
+	
+	public int getBottomLine() {
+		return BOTTOM_LINE;
+	}
+		
+	public int getLeftLine() {
+		return LEFT_LINE;
+	}
+		
+//-----------------------------------------------------------------------------------------------	
 	public String toString() {
 		String output = "";
 		output += "Center:       (" + LOCATION_X + "," + LOCATION_Y + ")\n";

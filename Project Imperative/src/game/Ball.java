@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
+
 public class Ball extends GameElement {
 	private int SLOPE_X = 1;
 	private int SLOPE_Y = 1;
@@ -10,11 +12,13 @@ public class Ball extends GameElement {
 	public Ball(Board board, int size) {
 		super(board, size);
 		NAME = "Quincy";
+		COLOR = Color.pink;
 	}
 
 	public Ball(Board board, int size, int locationX, int locationY) {
 		super(board,size,size,locationX,locationY);
 		NAME = "Quincy";
+		COLOR = Color.pink;
 	}
 	
 	public Ball(Board board, int size, int slopeX, int slopeY, int velocity) {
@@ -22,6 +26,7 @@ public class Ball extends GameElement {
 		setSlope(slopeX, slopeY);
 		setVelocity(velocity);
 		NAME = "Quincy";
+		COLOR = Color.pink;
 	}
 
 	public Ball(Board board, int size, int locationX, int locationY, int slopeX, int slopeY, int velocity) {
@@ -29,6 +34,7 @@ public class Ball extends GameElement {
 		setSlope(slopeX, slopeY);
 		setVelocity(velocity);
 		NAME = "Quincy";
+		COLOR = Color.pink;
 	}
 
 	public void moveSelf() {
@@ -39,68 +45,20 @@ public class Ball extends GameElement {
 	}
 	
 	public void collisionTest() {
-		boolean firstEncounter = true;
-		int lastX = 0;
-		int lastY = 0;
-		GhostElement ghost = new GhostElement();
-		for(int countX = LEFT_LINE; countX <= RIGHT_LINE; countX++) {
-			for(int countY = TOP_LINE; countY <= BOTTOM_LINE; countY++) {
-				ArrayList<GameElement> currentElements = BOARD.getElementsAtLocation(countX, countY);
-				for(int count = 0; count < currentElements.size(); count++) {
-					GameElement element = currentElements.get(count);
-					if(element != this && firstEncounter) {
-						ghost.CREATED = true;
-						ghost.TOP_LINE = countY;
-						ghost.LEFT_LINE = countX;
-						firstEncounter = false;
-						lastX = countX;
-						lastY = countY;
-					} else if(element != this) {
-						lastX = countX;
-						lastY = countY;
-					}
-					
-				}
+		ArrayList<GameElement> elements = BOARD.getGameElements();
+		for(int count = 0; count < elements.size(); count++) {
+			GameElement current = elements.get(count);
+			if((LOCATION_X + (SIZE_X/2)) <= current.getLeftLine() + 5 ) {
+				SLOPE_X *= -1;
 			}
-		}
-		
-		if(ghost.CREATED) {
-			ghost.RIGHT_LINE = lastX;
-			ghost.BOTTOM_LINE = lastY;
-			System.out.println(ghost + "\n");
-			
-			int ghostXDiff = Math.abs(ghost.LEFT_LINE - ghost.RIGHT_LINE);
-			int ghostYDiff = Math.abs(ghost.TOP_LINE - ghost.BOTTOM_LINE);
-			
-			System.out.println("X Diff: " + ghostXDiff);
-			System.out.println("Y Diff: " + ghostYDiff);
-			
-			if(ghostXDiff - 2 > ghostYDiff + 2) {
-//				System.out.println("X");
-				SLOPE_X /= -1;
-				
-				if(ghost.RIGHT_LINE > LOCATION_X) {
-					int move = ghost.LEFT_LINE - (SIZE_X/2);
-					moveSelf(move - 2, LOCATION_Y);
-				} else {
-					int move = ghost.RIGHT_LINE + (SIZE_X/2);
-					moveSelf(move + 2, LOCATION_Y);
-				}
-			} else if(ghostXDiff + 2 < ghostYDiff - 2) {
-//				System.out.println("Y");
-				SLOPE_Y /= -1;
-
-				if(ghost.TOP_LINE > LOCATION_Y) {
-					int move = ghost.BOTTOM_LINE + (SIZE_X/2);
-					moveSelf(LOCATION_X, move + 2);
-				} else {
-					int move = ghost.TOP_LINE - (SIZE_X/2);
-					moveSelf(LOCATION_X, move - 2);
-				}
-			} else {
-//				System.out.println("BOTH");
-				SLOPE_X /= -1;
-				SLOPE_Y /= -1;
+			if(LOCATION_X - (SIZE_X/2) >= current.getRightLine() + 5){
+				SLOPE_X *= -1;
+			}
+			if((LOCATION_Y + (SIZE_Y/2)) <= current.getTopLine() + 5) {
+				SLOPE_Y *= -1;
+			}
+			if((LOCATION_Y - (SIZE_Y/2)) >= current.getBottomLine() + 5){
+				SLOPE_Y *= -1;
 			}
 		}
 	}
@@ -138,18 +96,88 @@ public class Ball extends GameElement {
 		SLOPE_Y = slopeY;
 	}
 	
-	private class GhostElement {
-		public boolean CREATED = false;
-		public int TOP_LINE;
-		public int RIGHT_LINE;
-		public int BOTTOM_LINE;
-		public int LEFT_LINE;
-		
-		public String toString() {
-			String output = CREATED + ":\n";
-			output += "Top Left:     (" + LEFT_LINE + "," + TOP_LINE + ")\n";
-			output += "Bottom Right: (" + RIGHT_LINE + "," + BOTTOM_LINE + ")\n";
-			return output;
-		}
-	}
+//	System.out.println("Initiate: Collision");
+//	boolean firstEncounter = true;
+//	int lastX = 0;
+//	int lastY = 0;
+//	GhostElement ghost = new GhostElement();
+//	for(int countX = LEFT_LINE; countX <= RIGHT_LINE; countX++) {
+//		for(int countY = TOP_LINE; countY <= BOTTOM_LINE; countY++) {
+//			System.out.println(countX + "," + countY);
+////			System.out.println();
+//			ArrayList<GameElement> currentElements = BOARD.getElementsAtLocation(countX, countY);
+//			for(int count = 0; count < currentElements.size(); count++) {
+//				GameElement element = currentElements.get(count);
+////				System.out.println(element.getName());
+//				if(element != this && firstEncounter) {
+//					System.out.println(element);
+//					ghost.CREATED = true;
+//					ghost.TOP_LINE = countY;
+//					ghost.LEFT_LINE = countX;
+//					firstEncounter = false;
+//					lastX = countX;
+//					lastY = countY;
+//				} else if(element != this) {
+//					lastX = countX;
+//					lastY = countY;
+//				}
+//			}
+//		}
+//	}
+//	
+//	if(ghost.CREATED) {
+//		ghost.RIGHT_LINE = lastX;
+//		ghost.BOTTOM_LINE = lastY;
+//		System.out.println(ghost + "\n");
+//		
+//		int ghostXDiff = Math.abs(ghost.LEFT_LINE - ghost.RIGHT_LINE);
+//		int ghostYDiff = Math.abs(ghost.TOP_LINE - ghost.BOTTOM_LINE);
+//		
+//		System.out.println("X Diff: " + ghostXDiff);
+//		System.out.println("Y Diff: " + ghostYDiff);
+//		
+//		if(ghostXDiff - 2 > ghostYDiff + 2) {
+//			System.out.println("X");
+//			SLOPE_X /= -1;
+//			
+//			if(ghost.RIGHT_LINE > LOCATION_X) {
+//				int move = ghost.LEFT_LINE - (SIZE_X/2);
+//				moveSelf(move - 2, LOCATION_Y);
+//			} else {
+//				int move = ghost.RIGHT_LINE + (SIZE_X/2);
+//				moveSelf(move + 2, LOCATION_Y);
+//			}
+//		} else if(ghostXDiff + 2 < ghostYDiff - 2) {
+//			System.out.println("Y");
+//			SLOPE_Y /= -1;
+//
+//			if(ghost.TOP_LINE > LOCATION_Y) {
+//				int move = ghost.BOTTOM_LINE + (SIZE_X/2);
+//				moveSelf(LOCATION_X, move + 2);
+//			} else {
+//				int move = ghost.TOP_LINE - (SIZE_X/2);
+//				moveSelf(LOCATION_X, move - 2);
+//			}
+//		} else {
+//			System.out.println("BOTH");
+//			SLOPE_X /= -1;
+//			SLOPE_Y /= -1;
+//		}
+//		
+//		System.out.println(ghost + "\n");
+//	}
+//	private class GhostElement {
+//		public boolean CREATED = false;
+//		public int TOP_LINE;
+//		public int RIGHT_LINE;
+//		public int BOTTOM_LINE;
+//		public int LEFT_LINE;
+//		
+//		public String toString() {
+//			String output = CREATED + ":\n";
+//			output += "Top Left:     (" + LEFT_LINE + "," + TOP_LINE + ")\n";
+//			output += "Bottom Right: (" + RIGHT_LINE + "," + BOTTOM_LINE + ")\n";
+//			return output;
+//		}
+//	}
 }
