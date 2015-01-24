@@ -15,6 +15,8 @@ public class Server {
 	public static final int NUMBER_OF_PLAYERS = 2;
 	public static final String COM_COORDS = "HERE_ARE_SOME_COORDS";
 	public static final String EX_COM_COORDS = COM_COORDS + " label yValue xValue";
+	public static final String COM_EVENT = "NEW_EVENT";
+	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID" + " " + "eventLength(in seconds)";
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;
@@ -51,6 +53,7 @@ public class Server {
 				IPS.add(SOCKET.getInetAddress().toString());
 				System.out.println("Server: New connection from " + SOCKET.getInetAddress().toString());
 				ServerToClientConnection newConnect = new ServerToClientConnection(this,DATA_OUT,DATA_IN,SOCKET.getInetAddress());
+				SERVER_CLIENT_CONNECTIONS.add(newConnect);
 				newConnect.start();
 			} catch (IOException e) {
 				System.out.println("Server: I lost connection to the network.");

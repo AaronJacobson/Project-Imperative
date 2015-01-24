@@ -1,0 +1,40 @@
+Curving ball
+	The ball will curve slightly in one direction for the alloted time
+Variable paddle speed
+	The paddles will either speed up or down for the alloted time
+Variable ball speed
+	The ball will either speed up or down for the alloted time
+Team members switch paddles
+	Team members of one or both teams will instantly switch paddles at the begining then switch back when the time ends
+Increased speed off of bounce
+	The ball's speed will increase everytime it bounces
+Portals
+	For the alloted time there will be portals on the field that instantaniously teleport it to the paired portal.
+Invisible paddles
+	The paddles will increase in size and will become invisible
+Rectangle ball
+	The ball becomes a rectangle
+Fake balls
+	Some fake balls appear which look identical to the real one
+Half Life 3 mode
+	
+Co-op Boss
+	A boss appears which shoots balls at each team and will only be defeated by the teams bouncing the balls back at it
+Destructable and non-destructable walls
+	Some walls appear which can be destroyed by bouncing the ball off of them or they will last until the end of the time
+Multiple balls
+	Extra balls appear which can be scored
+Moving walls
+	Walls appear on the field which move around
+Wind
+	Wind pushes the ball(s) and paddles in on direction
+Pushable Walls
+	Walls appear which can be pushed by bouncing the ball off of them
+Vertical moving(controllable) paddles
+	For the time the paddles can be moved both vertically and horizantally
+Vertically teleported paddles
+	The paddles are teleported a random amount up or down but can still only be moved laterally, they will return after the time
+Balls which lock a paddle in place upon being hit
+	For the time some of the balls will freeze any paddle they hit.
+Be the ball
+	The player becomes the ball.
