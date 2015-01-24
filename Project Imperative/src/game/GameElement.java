@@ -1,6 +1,9 @@
 package game;
 
 public class GameElement {
+	protected Board BOARD;
+	protected String NAME = "Larry";
+	
 	protected int LOCATION_X = 200;
 	protected int LOCATION_Y = 200;
 	
@@ -12,24 +15,40 @@ public class GameElement {
 	protected int SIZE_X;
 	protected int SIZE_Y;
 	
-	public GameElement(int size) {
+	public GameElement(Board board, int size) {
 		SIZE_X = size;
 		SIZE_Y = size;
 		updateBounds();
+		BOARD = board;
+		board.addElement(this);
 	}
 	
-	public GameElement(int sizeX, int sizeY) {
+	public GameElement(Board board, int sizeX, int sizeY) {
 		SIZE_X = sizeX;
 		SIZE_Y = sizeY;
 		updateBounds();
+		BOARD = board;
+		board.addElement(this);
 	}
 	
-	public GameElement(int sizeX, int sizeY, int locationX, int locationY) {
+	public GameElement(Board board, int sizeX, int sizeY, int locationX, int locationY) {
 		SIZE_X = sizeX;
 		SIZE_Y = sizeY;
 		LOCATION_X = locationX;
 		LOCATION_Y = locationY;
 		updateBounds();
+		BOARD = board;
+		board.addElement(this);
+	}
+
+	public GameElement(Board board, int size, int locationX, int locationY) {
+		SIZE_X = size;
+		SIZE_Y = size;
+		LOCATION_X = locationX;
+		LOCATION_Y = locationY;
+		updateBounds();
+		BOARD = board;
+		board.addElement(this);
 	}
 	
 	private void updateBounds() {
@@ -45,6 +64,40 @@ public class GameElement {
 		updateBounds();
 	}
 	
+	public boolean containsCoordiates(int x, int y) {
+		boolean output = false;
+//		System.out.println(RIGHT_LINE + " - " + x + " - " + LEFT_LINE);
+//		System.out.println(BOTTOM_LINE + " - " + y + " - " + TOP_LINE);
+		if(x <= RIGHT_LINE && x >= LEFT_LINE) {
+			if(y <= BOTTOM_LINE && y >= TOP_LINE) {
+				output = true;
+			}
+		}
+		return output;
+	}
+	
+//-----------------------------------------------------------------------------------------------
+	
+	public int getLocationX() {
+		return LOCATION_X;
+	}
+	
+	public int getLocationY() {
+		return LOCATION_Y;
+	}
+	
+//-----------------------------------------------------------------------------------------------	
+	
+	public String getName() {
+		return NAME;
+	}
+	
+	public void setName(String name) {
+		NAME = name;
+	}
+	
+//-----------------------------------------------------------------------------------------------	
+
 	public String toString() {
 		String output = "";
 		output += "Center:       (" + LOCATION_X + "," + LOCATION_Y + ")\n";
