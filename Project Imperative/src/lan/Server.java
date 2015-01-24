@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 public class Server {
-	public static final int PORT_NUMBER = 90571;
+	public static final int PORT_NUMBER = 41800;
 	public static final int NUMBER_OF_PLAYERS = 2;
 	public static final String COM_COORDS = "HERE_ARE_SOME_COORDS";
 	public static final String EX_COM_COORDS = COM_COORDS + " label xValue yValue";
