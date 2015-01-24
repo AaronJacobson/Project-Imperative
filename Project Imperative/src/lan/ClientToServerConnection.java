@@ -33,5 +33,15 @@ public class ClientToServerConnection extends Thread{
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
 		}
+		messageScanner.close();
+	}
+	
+	public void sendMessage(String toSend){
+		System.out.println("ClientToServerConnection: Sending " + toSend);
+		try {
+			DATA_OUT.writeUTF(toSend);
+		} catch (IOException e) {
+			System.out.println("ClientToServerConnection: Unable to communicate with the server.");
+		}
 	}
 }

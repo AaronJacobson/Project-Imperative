@@ -30,4 +30,8 @@ public class Client {
 			System.out.println("Client: Someone is already using the port number.");
 		}
 	}
+	
+	public void sendMessage(String toSend){
+		CLIENT_SERVER_CONNECTION.sendMessage(toSend);
+	}
 }

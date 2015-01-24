@@ -3,8 +3,10 @@ package lan;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 
@@ -12,7 +14,7 @@ public class Server {
 	public static final int PORT_NUMBER = 41800;
 	public static final int NUMBER_OF_PLAYERS = 2;
 	public static final String COM_COORDS = "HERE_ARE_SOME_COORDS";
-	public static final String EX_COM_COORDS = COM_COORDS + " label xValue yValue";
+	public static final String EX_COM_COORDS = COM_COORDS + " label yValue xValue";
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;
@@ -27,7 +29,11 @@ public class Server {
 	}
 	
 	public void startServer(){
-		System.out.println("Server: I'm booting up.");
+		try {
+			System.out.println("Server: I'm booting up. On the ip address of " + InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e1) {
+			System.out.println("Server: Unable to connect to a network.");
+		}
 		try {
 			SERVER_SOCKET = new ServerSocket(PORT_NUMBER);
 			System.out.println("Server: I'm successfully booting up.");
@@ -45,6 +51,7 @@ public class Server {
 				IPS.add(SOCKET.getInetAddress().toString());
 				System.out.println("Server: New connection from " + SOCKET.getInetAddress().toString());
 				ServerToClientConnection newConnect = new ServerToClientConnection(this,DATA_OUT,DATA_IN,SOCKET.getInetAddress());
+				newConnect.start();
 			} catch (IOException e) {
 				System.out.println("Server: I lost connection to the network.");
 			}

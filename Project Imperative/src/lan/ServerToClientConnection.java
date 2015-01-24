@@ -22,6 +22,7 @@ public class ServerToClientConnection extends Thread{
 		while(true){
 			try {
 				String message = DATA_IN.readUTF();
+				interpretMessage(message);
 			} catch (IOException e) {
 				System.out.println("ServerToClientConnection: I have lost connection to the network.");
 			}
@@ -36,7 +37,9 @@ public class ServerToClientConnection extends Thread{
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
 			//give the information to the gui
+			System.out.println("Incoming information: " + label + " " + xLocation + " " + yLocation);
 		}
+		messageScanner.close();
 	}
 	
 	public void sendCommand(String toSend){
