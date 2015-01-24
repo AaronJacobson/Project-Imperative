@@ -39,7 +39,7 @@ public class PongGame extends BasicGameState{
 //		ball3.setColor(Color.red);
 //		ball5.draw(g);
 		
-		ball.moveSelf();
+		ball.updateLocation();
 //		ball2.moveSelf();
 //		ball3.moveSelf();
 //		ball4.moveSelf();

@@ -37,7 +37,7 @@ public class Ball extends GameElement {
 		COLOR = Color.pink;
 	}
 
-	public void moveSelf() {
+	public void updateLocation() {
 		int newX = LOCATION_X + (SLOPE_X * VELOCITY);
 		int newY = LOCATION_Y + (SLOPE_Y * VELOCITY);
 		super.moveSelf(newX, newY);
