@@ -16,7 +16,7 @@ public class Server {
 	public static final String COM_COORDS = "HERE_ARE_SOME_COORDS";
 	public static final String EX_COM_COORDS = COM_COORDS + " label yValue xValue";
 	public static final String COM_EVENT = "NEW_EVENT";
-	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID";
+	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID" + " " + "eventLength(in seconds)";
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;

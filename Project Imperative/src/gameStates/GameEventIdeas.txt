@@ -10,4 +10,8 @@ Fake balls
 Half Life 3 mode
 Co-op Boss
 Destructable and non-destructable walls
-Mutliple balls
+Multiple balls
+Moving walls
+Wind
+Pushable Walls
+Lateral moving paddles
