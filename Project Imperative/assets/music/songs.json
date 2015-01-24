@@ -1,0 +1,65 @@
+[
+    {
+        "name": "little bouncing ball",
+        "stemDir": "little-bouncing-ball",
+        "layers": [
+            {
+                "name": "bass",
+                "stems": [
+                    "bass-1"
+                ]
+            },
+            {
+                "name": "bleep",
+                "stems": [
+                    "bleep-1"
+                ]
+            },
+            {
+                "name": "chime",
+                "stems": [
+                    "chime-1",
+                    "chime-2"
+                ]
+            },
+            {
+                "name": "dubbass",
+                "stems": [
+                    "dubbass-1"
+                ]
+            },
+            {
+                "name": "jitter",
+                "stems": [
+                    "jitter-1"
+                ]
+            },
+            {
+                "name": "perc",
+                "stems": [
+                    "perc-1",
+                    "perc-2",
+                    "perc-3"
+                ]
+            },
+            {
+                "name": "tingwhirl",
+                "stems": [
+                    "tingwhirl-1"
+                ]
+            },
+            {
+                "name": "whirl",
+                "stems": [
+                    "whirl-1"
+                ]
+            },
+            {
+                "name": "whoosh",
+                "stems": [
+                    "whoosh-1"
+                ]
+            }
+        ]
+    }
+]
