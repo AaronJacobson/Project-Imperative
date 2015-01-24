@@ -32,6 +32,9 @@ public class ClientToServerConnection extends Thread{
 			String label = messageScanner.next();
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
+		}else if(theCommand.equals(Server.COM_EVENT)){
+			int eventID = messageScanner.nextInt();
+			System.out.println("ClientToServerConnection: The event id is " + eventID);
 		}
 		messageScanner.close();
 	}
