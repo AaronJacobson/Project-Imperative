@@ -1,0 +1,13 @@
+Curving ball
+Variable paddle speed
+Variable ball speed
+Team members switch paddles
+Increased speed off of bounce
+Portals
+Invisible paddles
+Rectangle ball
+Fake balls
+Half Life 3 mode
+Co-op Boss
+Destructable and non-destructable walls
+Mutliple balls
