@@ -1,6 +1,9 @@
 Curving ball
+	The ball will curve slightly in one direction for the alloted time
 Variable paddle speed
+	The paddles will either speed up or down for the alloted time
 Variable ball speed
+	The ball will either speed up or down
 Team members switch paddles
 Increased speed off of bounce
 Portals
@@ -14,4 +17,7 @@ Multiple balls
 Moving walls
 Wind
 Pushable Walls
-Lateral moving paddles
+Lateral moving(controllable) paddles
+Laterally teleported paddles
+Balls which lock a paddle in place upon being hit
+Be the ball
