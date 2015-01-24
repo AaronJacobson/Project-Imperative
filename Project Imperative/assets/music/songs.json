@@ -40,7 +40,8 @@
                     "perc-1",
                     "perc-2",
                     "perc-3"
-                ]
+                ],
+                "canSolo": false
             },
             {
                 "name": "tingwhirl",
@@ -58,7 +59,8 @@
                 "name": "whoosh",
                 "stems": [
                     "whoosh-1"
-                ]
+                ],
+                "canSolo": false
             }
         ]
     }
