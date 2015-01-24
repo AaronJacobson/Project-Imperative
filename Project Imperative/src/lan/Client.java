@@ -23,6 +23,7 @@ public class Client {
 			DATA_IN = new DataInputStream(SOCKET.getInputStream());
 			DATA_OUT = new DataOutputStream(SOCKET.getOutputStream());
 			System.out.println("Client: Successfully connected to the server.");
+			CLIENT_SERVER_CONNECTION = new ClientToServerConnection(DATA_OUT,DATA_IN);
 		} catch (UnknownHostException e) {
 			System.out.println("Client: Unable to connect over the network.");
 		} catch (IOException e) {
