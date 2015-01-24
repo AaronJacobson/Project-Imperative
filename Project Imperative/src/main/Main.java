@@ -15,11 +15,11 @@ public class Main extends StateBasedGame{
 	public Main(String name) {
 		super(name);
 	}
-
+	
 	public static void main(String[] args) throws SlickException{
 		AppGameContainer gameFrame = new AppGameContainer(Game);
 		gameFrame.setTargetFrameRate(60);
-		gameFrame.setDisplayMode(500, 800, false);		
+		gameFrame.setDisplayMode(500, 700, false);		
 		gameFrame.start();		
 	}
 	
