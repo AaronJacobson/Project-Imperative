@@ -29,8 +29,6 @@ public class PongGame extends BasicGameState{
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
 		paddle1 = new Paddle(board, 50, 680);	
 		paddle2 = new Paddle(board, 50, 0);
-		paddle1.setName(main.Main.SERVER.IPS.get(0));
-		paddle2.setName(main.Main.SERVER.IPS.get(1));
 	}
 
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
