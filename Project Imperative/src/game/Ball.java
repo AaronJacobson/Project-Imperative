@@ -1,11 +1,9 @@
 package game;
 
 import java.util.ArrayList;
-
 import javafx.geometry.Bounds;
 import javafx.scene.shape.Circle;
 import java.awt.Rectangle;
-
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 

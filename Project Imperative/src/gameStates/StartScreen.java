@@ -12,20 +12,34 @@ import org.newdawn.slick.state.StateBasedGame;
 public class StartScreen extends BasicGameState {
 	private TextField textInput;
 	private Image background;
-
+	private String option1;
+	private String option2;
+	private String option3;
+	private String option4;
+	
+	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
-		textInput = new TextField(container, null, 200, 50, 100, 20);
+		textInput = new TextField(container, container.getDefaultFont(), 200, 350, 100, 20);
 		background = new Image("slick/testdata/Feild Background.png"); 
+		option1 = "StartGame";
+		option2 = "Join Game"; 
+		option3 = "Create Game";
+		option4 = "   Quit";
 		
 	}
-
+	
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
 		g.setColor(Color.blue);
 		background.draw();
-		// textInput.render(container, g);
+		textInput.render(container, g);
+		
+		g.drawString(option1, 205, 260);
+		g.drawString(option2, 205, 305);
+		g.drawString(option3, 205, 395);
+		g.drawString(option4, 208, 540);
 	}
 
-	public void update(GameContainer container, StateBasedGame arg1, int arg2) throws SlickException {
+	public void update(GameContainer container, StateBasedGame arg1, int delta) throws SlickException {
 		
 	}
 
