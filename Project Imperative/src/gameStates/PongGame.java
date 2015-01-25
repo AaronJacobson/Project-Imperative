@@ -8,6 +8,7 @@ import game.Paddle;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -27,6 +28,7 @@ public class PongGame extends BasicGameState{
 	public static Paddle paddle2;
 	public static Paddle paddle3;
 	public static Paddle paddle4;
+	private Music backgroundMusic;
 	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
 		PADDLES = new Paddle[2];
@@ -34,6 +36,7 @@ public class PongGame extends BasicGameState{
 		paddle2 = new Paddle(board, 50, 0);
 		PADDLES[0] = paddle1;
 		PADDLES[1] = paddle2;
+		backgroundMusic = new Music("assets/music/little-bouncing-ball/arrangement.ogg");
 	}
 
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
@@ -59,10 +62,10 @@ public class PongGame extends BasicGameState{
 
 	public void update(GameContainer container, StateBasedGame arg1, int delta) throws SlickException {	
 		playerControls.handleInput(container.getInput(), delta);
+		backgroundMusic.loop();
 	}
 
 	public int getID() {
 		return 1;
 	}
-
 }
