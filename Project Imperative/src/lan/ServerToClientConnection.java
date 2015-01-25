@@ -1,5 +1,7 @@
 package lan;
 
+import gameStates.PongGame;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class ServerToClientConnection extends Thread{
 		while(true){
 			try {
 				String message = DATA_IN.readUTF();
+				SERVER.sendToAll(message);
 				interpretMessage(message);
 			} catch (IOException e) {
 				System.out.println("ServerToClientConnection: I have lost connection to the network.");
@@ -30,16 +33,20 @@ public class ServerToClientConnection extends Thread{
 	}
 	
 	public void interpretMessage(String message){
-		Scanner messageScanner = new Scanner(message);
-		String theCommand = messageScanner.next();
-		if(theCommand.equals(Server.COM_COORDS)){
-			String label = messageScanner.next();
-			int xLocation = messageScanner.nextInt();
-			int yLocation = messageScanner.nextInt();
-			
-			System.out.println("Incoming information: " + label + " " + xLocation + " " + yLocation);
-		}
-		messageScanner.close();
+		Thread temp = new Thread(new Runnable(){
+			public void run(){
+				Scanner messageScanner = new Scanner(message);
+				String theCommand = messageScanner.next();
+				if(theCommand.equals(Server.COM_COORDS)){
+					String name = messageScanner.next();
+					int xLocation = messageScanner.nextInt();
+					int yLocation = messageScanner.nextInt();
+					PongGame.board.getElement(name).setLocation(xLocation, yLocation);
+				}
+				messageScanner.close();
+			}
+		});
+		temp.start();
 	}
 	
 	public void sendCommand(String toSend){
