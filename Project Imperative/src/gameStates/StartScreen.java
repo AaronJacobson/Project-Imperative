@@ -12,11 +12,11 @@ import org.newdawn.slick.state.StateBasedGame;
 public class StartScreen extends BasicGameState {
 	private TextField textInput;
 	private Image background;
-	// private Graphics graphics = new Graphics();
+	private Graphics graphics = new Graphics();
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
-			// textInput = new TextField(container, null, 200, 50, 100, 20);
-			background = new Image("slick/testdata/Feild Background.png"); 
-			// textInput.render(container, graphics);
+		textInput = new TextField(container, null, 200, 50, 100, 20);
+		background = new Image("slick/testdata/Feild Background.png"); 
+		textInput.render(container, graphics);
 	}
 
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
