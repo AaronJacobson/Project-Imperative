@@ -41,8 +41,8 @@ public class StartScreen extends BasicGameState {
 			}else if(optionNumb == 3){//Create Server
 				Main.SERVER = new Server();
 				Main.CLIENT = new Client();
-				Main.CLIENT.connectToServer("127.0.0.1");
 				Main.SERVER.startServer();
+				Main.CLIENT.connectToServer("127.0.0.1");
 				Main.SERVER.waitForPlayers();
 			}else {
 				System.exit(0);

@@ -22,14 +22,13 @@ public class PongGame extends BasicGameState{
 	private Ball ball3 = new Ball(board, 20, 100, 100);
 	private GameElement leftWall = new GameElement(board, 15, 700, 0, 0);
 	private GameElement rightWall = new GameElement(board, 15, 700, 485, 0);
-	private keyboardControls playerControls;
-	private Paddle paddle1;
-	private Paddle paddle2;
+	public keyboardControls playerControls;
+	public static Paddle paddle1;
+	public static Paddle paddle2;
 	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
 		paddle1 = new Paddle(board, 50, 680);	
 		paddle2 = new Paddle(board, 50, 0);
-		playerControls = new keyboardControls(paddle1);
 		paddle1.setName(main.Main.SERVER.IPS.get(0));
 		paddle2.setName(main.Main.SERVER.IPS.get(1));
 	}

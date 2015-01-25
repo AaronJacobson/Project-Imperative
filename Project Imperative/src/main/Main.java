@@ -15,8 +15,8 @@ public class Main extends StateBasedGame{
 	public static Main Game = new Main("Game");
 	public static Server SERVER;
 	public static Client CLIENT;
-	public StartScreen OptionMenu = new StartScreen();
-	public PongGame MainGame = new PongGame();
+	public static StartScreen OptionMenu = new StartScreen();
+	public static PongGame MainGame = new PongGame();
 	
 	public Main(String name) {
 		super(name);
