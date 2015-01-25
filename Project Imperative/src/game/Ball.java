@@ -46,22 +46,19 @@ public class Ball extends GameElement {
 	
 	public void collisionTest() {
 		ArrayList<GameElement> elements = BOARD.getGameElements();
-		for(int count = 0; count < elements.size(); count++) {
-			GameElement current = elements.get(count);
-			if((LOCATION_X + (SIZE_X/2)) <= current.getLeftLine() + 5 && LOCATION_X >= current.getLeftLine() + 5) {
-				System.out.println(current.getName());
+		for(GameElement E : BOARD.getGameElements()) {
+			if(LEFT_LINE < E.getRightLine() && LOCATION_X > E.getRightLine()){
+				System.out.println("Hit left");
+				SLOPE_X *= -1;
+			}else if(RIGHT_LINE > E.getLeftLine() && LOCATION_X < E.getLeftLine()){
+				System.out.println("Hit right");
 				SLOPE_X *= -1;
 			}
-			if(LOCATION_X - (SIZE_X/2) >= current.getRightLine() + 5 && LOCATION_X <= current.getRightLine() + 5){
-				System.out.println(current.getName());
-				SLOPE_X *= -1;
-			}
-			if((LOCATION_Y + (SIZE_Y/2)) <= current.getTopLine() + 5 && LOCATION_Y >= current.getTopLine()) {
-				System.out.println(current.getName());
+			if(TOP_LINE < E.getBottomLine() && LOCATION_Y > E.getBottomLine()){
+				System.out.println("Hit top");
 				SLOPE_Y *= -1;
-			}
-			if((LOCATION_Y - (SIZE_Y/2)) >= current.getBottomLine() + 5 && LOCATION_Y <= current.getBottomLine()){
-				System.out.println(current.getName());
+			}else if(BOTTOM_LINE > E.getTopLine() && LOCATION_Y < E.getTopLine()){
+				System.out.println("Hit bottom");
 				SLOPE_Y *= -1;
 			}
 		}
