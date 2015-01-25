@@ -45,6 +45,7 @@ public class Ball extends GameElement {
 		super.moveSelf(newX, newY);
 		collisionTest();
 		checkOutOfBounds();
+		super.moveSelf(LOCATION_X,LOCATION_Y);
 	}
 	
 	public void checkOutOfBounds(){
