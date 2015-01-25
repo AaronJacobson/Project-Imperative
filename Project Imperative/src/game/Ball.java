@@ -51,10 +51,12 @@ public class Ball extends GameElement {
 	public void checkOutOfBounds(){
 		if(LOCATION_X > 500 || LOCATION_X < 0){
 			System.out.println(NAME + " has went out of bounds.");
+			System.out.println(NAME + "'s x is " + LOCATION_X);
 			LOCATION_X = 250;
 		}
 		if(LOCATION_Y > 700 || LOCATION_Y < 0){
 			System.out.println(NAME + " has went out of bounds.");
+			System.out.println(NAME + "'s y is " + LOCATION_Y);
 			LOCATION_Y = 350;
 		}
 	}

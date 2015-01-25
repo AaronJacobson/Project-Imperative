@@ -78,8 +78,6 @@ public class GameElement {
 	
 	public boolean containsCoordiates(int x, int y) {
 		boolean output = false;
-//		System.out.println(RIGHT_LINE + " - " + x + " - " + LEFT_LINE);
-//		System.out.println(BOTTOM_LINE + " - " + y + " - " + TOP_LINE);
 		if(x <= RIGHT_LINE && x >= LEFT_LINE) {
 			if(y <= BOTTOM_LINE && y >= TOP_LINE) {
 				output = true;
@@ -151,11 +149,11 @@ public class GameElement {
 	}
 		
 //-----------------------------------------------------------------------------------------------	
-	public String toString() {
-		String output = "";
-		output += "Center:       (" + LOCATION_X + "," + LOCATION_Y + ")\n";
-		output += "Top Left:     (" + LEFT_LINE + "," + TOP_LINE + ")\n";
-		output += "Bottom Right: (" + RIGHT_LINE + "," + BOTTOM_LINE + ")\n";
-		return output;
-	}
+//	public String toString() {
+//		String output = "";
+//		output += "Center:       (" + LOCATION_X + "," + LOCATION_Y + ")\n";
+//		output += "Top Left:     (" + LEFT_LINE + "," + TOP_LINE + ")\n";
+//		output += "Bottom Right: (" + RIGHT_LINE + "," + BOTTOM_LINE + ")\n";
+//		return output;
+//	}
 }

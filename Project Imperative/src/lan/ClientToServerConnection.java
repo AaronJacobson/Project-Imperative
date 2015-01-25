@@ -35,7 +35,6 @@ public class ClientToServerConnection extends Thread{
 	public void interpretMessage(String message){
 		Scanner messageScanner = new Scanner(message);
 		String theCommand = messageScanner.next();
-		System.out.println(message);
 		if(theCommand.equals(Server.COM_COORDS)){
 			String name = messageScanner.next();
 			int xLocation = messageScanner.nextInt();
@@ -49,7 +48,6 @@ public class ClientToServerConnection extends Thread{
 			PongGame.paddle1.setName(messageScanner.next());
 			PongGame.paddle2.setName(messageScanner.next());
 			main.Main.MainGame.playerControls = new keyboardControls(PongGame.PADDLES[messageScanner.nextInt()]);
-			System.out.println("wubz wubz wubz");
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();
