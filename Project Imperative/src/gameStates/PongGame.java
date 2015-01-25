@@ -49,6 +49,7 @@ public class PongGame extends BasicGameState{
 		leftWall.draw(g);
 		rightWall.draw(g);
 		paddle1.draw(g);
+		paddle2.draw(g);
 	}
 
 	public void update(GameContainer container, StateBasedGame arg1, int delta) throws SlickException {	
