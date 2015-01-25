@@ -2,7 +2,13 @@ package game;
 
 import java.util.ArrayList;
 
+import javafx.geometry.Bounds;
+import javafx.scene.shape.Circle;
+import java.awt.Rectangle;
+
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+
 
 public class Ball extends GameElement {
 	private int SLOPE_X = 1;
@@ -47,19 +53,25 @@ public class Ball extends GameElement {
 	public void collisionTest() {
 		ArrayList<GameElement> elements = BOARD.getGameElements();
 		for(GameElement E : BOARD.getGameElements()) {
-			if(LEFT_LINE < E.getRightLine() && LOCATION_X > E.getRightLine()){
-				System.out.println("Hit left");
-				SLOPE_X *= -1;
-			}else if(RIGHT_LINE > E.getLeftLine() && LOCATION_X < E.getLeftLine()){
-				System.out.println("Hit right");
-				SLOPE_X *= -1;
-			}
-			if(TOP_LINE < E.getBottomLine() && LOCATION_Y > E.getBottomLine()){
-				System.out.println("Hit top");
-				SLOPE_Y *= -1;
-			}else if(BOTTOM_LINE > E.getTopLine() && LOCATION_Y < E.getTopLine()){
-				System.out.println("Hit bottom");
-				SLOPE_Y *= -1;
+			if(E != this){
+				Rectangle myBounds = new Rectangle(LOCATION_X,LOCATION_Y,SIZE_X,SIZE_Y);
+				Rectangle rekt = new Rectangle(E.getLocationX(),E.getLocationY(),E.getSizeX(),E.getSizeY());
+				if(myBounds.intersects(rekt)){
+					if(LEFT_LINE < E.getRightLine() + 5&& LOCATION_X > E.getRightLine() + 5){
+						System.out.println("Hit left");
+						SLOPE_X *= -1;
+					}else if(RIGHT_LINE > E.getLeftLine() - 5 && LOCATION_X < E.getLeftLine() - 5){
+						System.out.println("Hit right");
+						SLOPE_X *= -1;
+					}
+					if(TOP_LINE < E.getBottomLine()  + 5&& LOCATION_Y > E.getBottomLine() + 5){
+						System.out.println("Hit top");
+						SLOPE_Y *= -1;
+					}else if(BOTTOM_LINE > E.getTopLine() - 5 && LOCATION_Y < E.getTopLine() - 5){
+						System.out.println("Hit bottom");
+						SLOPE_Y *= -1;
+					}
+				}
 			}
 		}
 	}
@@ -95,6 +107,11 @@ public class Ball extends GameElement {
 	public void setSlope(int slopeX, int slopeY) {
 		SLOPE_X = slopeX;
 		SLOPE_Y = slopeY;
+	}
+	
+	public void drawBall(Graphics g){
+		g.setColor(COLOR);
+		g.fillOval(LOCATION_X, LOCATION_Y, SIZE_X, SIZE_Y);
 	}
 	
 //	System.out.println("Initiate: Collision");
