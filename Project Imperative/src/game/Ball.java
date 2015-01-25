@@ -48,16 +48,20 @@ public class Ball extends GameElement {
 		ArrayList<GameElement> elements = BOARD.getGameElements();
 		for(int count = 0; count < elements.size(); count++) {
 			GameElement current = elements.get(count);
-			if((LOCATION_X + (SIZE_X/2)) <= current.getLeftLine() + 5 ) {
+			if((LOCATION_X + (SIZE_X/2)) <= current.getLeftLine() + 5 && LOCATION_X >= current.getLeftLine() + 5) {
+				System.out.println(current.getName());
 				SLOPE_X *= -1;
 			}
-			if(LOCATION_X - (SIZE_X/2) >= current.getRightLine() + 5){
+			if(LOCATION_X - (SIZE_X/2) >= current.getRightLine() + 5 && LOCATION_X <= current.getRightLine() + 5){
+				System.out.println(current.getName());
 				SLOPE_X *= -1;
 			}
-			if((LOCATION_Y + (SIZE_Y/2)) <= current.getTopLine() + 5) {
+			if((LOCATION_Y + (SIZE_Y/2)) <= current.getTopLine() + 5 && LOCATION_Y >= current.getTopLine()) {
+				System.out.println(current.getName());
 				SLOPE_Y *= -1;
 			}
-			if((LOCATION_Y - (SIZE_Y/2)) >= current.getBottomLine() + 5){
+			if((LOCATION_Y - (SIZE_Y/2)) >= current.getBottomLine() + 5 && LOCATION_Y <= current.getBottomLine()){
+				System.out.println(current.getName());
 				SLOPE_Y *= -1;
 			}
 		}

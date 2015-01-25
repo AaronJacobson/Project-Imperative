@@ -9,6 +9,7 @@ public class Paddle extends GameElement {
 		super(board, 10, 30, locationX, locationY);
 		COLOR = Color.white;
 	}
-
 	
+//	public void setLocation
+		
 }

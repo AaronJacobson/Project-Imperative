@@ -36,7 +36,7 @@ public class ServerToClientConnection extends Thread{
 			String label = messageScanner.next();
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
-			//give the information to the gui
+			
 			System.out.println("Incoming information: " + label + " " + xLocation + " " + yLocation);
 		}
 		messageScanner.close();

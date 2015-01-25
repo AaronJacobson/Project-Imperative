@@ -104,6 +104,11 @@ public class GameElement {
 		return LOCATION_Y;
 	}
 	
+	public void setLocation(int newX,int newY){
+		LOCATION_X = newX;
+		LOCATION_Y = newY;
+	}
+	
 //-----------------------------------------------------------------------------------------------	
 	
 	public String getName() {
