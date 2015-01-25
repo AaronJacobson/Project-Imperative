@@ -29,6 +29,7 @@ public class ClientToServerConnection extends Thread{
 				interpretMessage(message);
 			} catch (IOException e) {
 				System.out.println("ClientToServerConnection: Lost connection to the server.");
+				break;
 			}
 		}
 	}
@@ -53,6 +54,7 @@ public class ClientToServerConnection extends Thread{
 			} catch (UnknownHostException e) {
 				System.out.println("ClientToServerConnection: No connection to the network.");
 			}
+			System.out.println("wubz");
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();

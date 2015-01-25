@@ -66,7 +66,7 @@ public class Server {
 				System.out.println("Server: I lost connection to the network.");
 			}
 		}
-		sendToAll(COM_START + IPS.get(0)+ " " + IPS.get(1));
+		sendToAll(COM_START + " " + IPS.get(0)+ " " + IPS.get(1));
 	}
 	
 	public void sendToAll(String toSend){
