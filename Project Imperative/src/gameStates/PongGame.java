@@ -31,7 +31,7 @@ public class PongGame extends BasicGameState{
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
 		PADDLES = new Paddle[2];
 		paddle1 = new Paddle(board, 50, 680);
-		paddle2 = new Paddle(board, 50, 10);
+		paddle2 = new Paddle(board, 50, 0);
 		PADDLES[0] = paddle1;
 		PADDLES[1] = paddle2;
 	}

@@ -49,6 +49,8 @@ public class ClientToServerConnection extends Thread{
 			PongGame.paddle1.setName(messageScanner.next());
 			PongGame.paddle2.setName(messageScanner.next());
 			main.Main.MainGame.playerControls = new keyboardControls(PongGame.PADDLES[messageScanner.nextInt()]);
+			System.out.println(PongGame.paddle1.getName());
+			System.out.println(PongGame.paddle2.getName());
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();
