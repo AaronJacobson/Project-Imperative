@@ -17,9 +17,9 @@ import controls.keyboardControls;
 
 public class PongGame extends BasicGameState{
 	public static Board board = new Board();
-	private Ball ball = new Ball(board, 20, 140, 250);
-	private Ball ball2 = new Ball(board, 20, 40, 200);
-	private Ball ball3 = new Ball(board, 20, 100, 100);
+//	private Ball ball = new Ball(board, 20, 140, 250);
+//	private Ball ball2 = new Ball(board, 20, 40, 200);
+//	private Ball ball3 = new Ball(board, 20, 100, 100);
 	private GameElement leftWall = new GameElement(board, 15, 700, 0, 0);
 	private GameElement rightWall = new GameElement(board, 15, 700, 485, 0);
 	public keyboardControls playerControls;
@@ -42,17 +42,17 @@ public class PongGame extends BasicGameState{
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
 		leftWall.setName("Left Wall");
 		rightWall.setName("Right Wall");
-		ball.drawBall(g);
-		ball.setColor(Color.blue);
-		ball.updateLocation();
+//		ball.drawBall(g);
+//		ball.setColor(Color.blue);
+//		ball.updateLocation();
 		
-		ball2.drawBall(g);
-		ball2.setColor(Color.green);
-		ball2.updateLocation();
-		
-		ball3.drawBall(g);
-		ball3.setColor(Color.pink);
-		ball3.updateLocation();
+//		ball2.drawBall(g);
+//		ball2.setColor(Color.green);
+//		ball2.updateLocation();
+//		
+//		ball3.drawBall(g);
+//		ball3.setColor(Color.pink);
+//		ball3.updateLocation();
 		
 		leftWall.draw(g);
 		rightWall.draw(g);

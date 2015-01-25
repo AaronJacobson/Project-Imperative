@@ -1,9 +1,9 @@
 package main.test;
-import java.util.ArrayList;
-
 import game.Ball;
 import game.Board;
 import game.GameElement;
+
+import java.util.ArrayList;
 
 public class GameElementTest {
 	public static void main(String[] args) {

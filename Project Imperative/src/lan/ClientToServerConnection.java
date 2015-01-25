@@ -13,20 +13,18 @@ import controls.keyboardControls;
 public class ClientToServerConnection extends Thread{
 	private DataOutputStream DATA_OUT;
 	private DataInputStream DATA_IN;
-	private InterpretServerMessageThread INTERPRET_MESSAGE;
 	
 	public ClientToServerConnection(DataOutputStream dataOut, DataInputStream dataIn){
 		DATA_OUT = dataOut;
 		DATA_IN = dataIn;
-		INTERPRET_MESSAGE = new InterpretServerMessageThread(this);
 	}
 	
 	public void run(){
 		while(true){
 			try {
 				String message = DATA_IN.readUTF();
-				INTERPRET_MESSAGE.setMessage(message);
-				INTERPRET_MESSAGE.start();
+				InterpretServerMessageThread interpretMessage = new InterpretServerMessageThread(message,this);
+				interpretMessage.start();
 			} catch (IOException e) {
 				System.out.println("ClientToServerConnection: Lost connection to the server, either you lost connection to the network, or they did.");
 				break;
@@ -37,9 +35,9 @@ public class ClientToServerConnection extends Thread{
 	public void interpretMessage(String message){
 		Scanner messageScanner = new Scanner(message);
 		String theCommand = messageScanner.next();
-		System.out.println(message);
 		if(theCommand.equals(Server.COM_COORDS)){
 			String name = messageScanner.next();
+			System.out.println("ClientToServerConnection: " + name);
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
 			PongGame.board.getElement(name).setLocation(xLocation, yLocation);
@@ -51,7 +49,6 @@ public class ClientToServerConnection extends Thread{
 			PongGame.paddle1.setName(messageScanner.next());
 			PongGame.paddle2.setName(messageScanner.next());
 			main.Main.MainGame.playerControls = new keyboardControls(PongGame.PADDLES[messageScanner.nextInt()]);
-			System.out.println("wubz wubz wubz");
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();
@@ -61,7 +58,7 @@ public class ClientToServerConnection extends Thread{
 		try {
 			DATA_OUT.writeUTF(toSend);
 		} catch (IOException e) {
-			System.out.println("ClientToServerConnection: Unable to communicate with the server.");
+//			System.out.println("ClientToServerConnection: Unable to communicate with the server.");
 		}
 	}
 }
@@ -70,12 +67,9 @@ class InterpretServerMessageThread extends Thread{
 	private String MESSAGE;
 	private ClientToServerConnection CLIENT_TO_SERVER_CONNECTION;
 	
-	public InterpretServerMessageThread(ClientToServerConnection serverConnection){
-		CLIENT_TO_SERVER_CONNECTION = serverConnection;
-	}
-	
-	public void setMessage(String message){
+	public InterpretServerMessageThread(String message,ClientToServerConnection serverConnection){
 		MESSAGE = message;
+		CLIENT_TO_SERVER_CONNECTION = serverConnection;
 	}
 	
 	public void run(){

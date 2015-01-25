@@ -13,13 +13,13 @@ public class Ball extends GameElement {
 
 	public Ball(Board board, int size) {
 		super(board, size);
-		NAME = "Quincy";
+		NAME = "Ball";
 		COLOR = Color.pink;
 	}
 
 	public Ball(Board board, int size, int locationX, int locationY) {
 		super(board,size,size,locationX,locationY);
-		NAME = "Quincy";
+		NAME = "Ball";
 		COLOR = Color.pink;
 	}
 	
@@ -27,7 +27,7 @@ public class Ball extends GameElement {
 		this(board, size);
 		setSlope(slopeX, slopeY);
 		setVelocity(velocity);
-		NAME = "Quincy";
+		NAME = "Ball";
 		COLOR = Color.pink;
 	}
 
@@ -35,7 +35,7 @@ public class Ball extends GameElement {
 		this(board,size,size,locationX,locationY);
 		setSlope(slopeX, slopeY);
 		setVelocity(velocity);
-		NAME = "Quincy";
+		NAME = "Ball";
 		COLOR = Color.pink;
 	}
 
@@ -44,6 +44,21 @@ public class Ball extends GameElement {
 		int newY = LOCATION_Y + (SLOPE_Y * VELOCITY);
 		super.moveSelf(newX, newY);
 		collisionTest();
+		checkOutOfBounds();
+		super.moveSelf(LOCATION_X,LOCATION_Y);
+	}
+	
+	public void checkOutOfBounds(){
+		if(LOCATION_X > 500 || LOCATION_X < 0){
+			System.out.println(NAME + " has went out of bounds.");
+			System.out.println(NAME + "'s x is " + LOCATION_X);
+			LOCATION_X = 250;
+		}
+		if(LOCATION_Y > 700 || LOCATION_Y < 0){
+			System.out.println(NAME + " has went out of bounds.");
+			System.out.println(NAME + "'s y is " + LOCATION_Y);
+			LOCATION_Y = 350;
+		}
 	}
 	
 	public void collisionTest() {
@@ -52,31 +67,17 @@ public class Ball extends GameElement {
 				Rectangle myBounds = new Rectangle(LOCATION_X,LOCATION_Y,SIZE_X,SIZE_Y);
 				Rectangle rekt = new Rectangle(E.getLocationX(),E.getLocationY(),E.getSizeX(),E.getSizeY());
 				if(myBounds.intersects(rekt)){
-//					if(LEFT_LINE < E.getRightLine() + 5&& LOCATION_X > E.getRightLine() + 5){
-//						System.out.println("Hit left");
-//						SLOPE_X *= -1;
-//					}else if(RIGHT_LINE > E.getLeftLine() - 5 && LOCATION_X < E.getLeftLine() - 5){
-//						System.out.println("Hit right");
-//						SLOPE_X *= -1;
-//					}
-//					if(TOP_LINE < E.getBottomLine()  + 5&& LOCATION_Y > E.getBottomLine() + 5){
-//						System.out.println("Hit top");
-//						SLOPE_Y *= -1;
-//					}else if(BOTTOM_LINE > E.getTopLine() - 5 && LOCATION_Y < E.getTopLine() - 5){
-//						System.out.println("Hit bottom");
-//						SLOPE_Y *= -1;
-//					}
-					if(LEFT_LINE < E.getRightLine()&& LOCATION_X > E.getRightLine()){
+					if(LEFT_LINE < E.getRightLine()+5&& LOCATION_X > E.getRightLine()+5){
 						System.out.println("Hit left");
 						SLOPE_X *= -1;
-					}else if(RIGHT_LINE > E.getLeftLine()&& LOCATION_X < E.getLeftLine()){
+					}else if(RIGHT_LINE > E.getLeftLine() - 5&& LOCATION_X < E.getLeftLine()-5){
 						System.out.println("Hit right");
 						SLOPE_X *= -1;
 					}
-					if(TOP_LINE < E.getBottomLine() && LOCATION_Y > E.getBottomLine()){
+					if(TOP_LINE < E.getBottomLine() +5&& LOCATION_Y > E.getBottomLine()+5){
 						System.out.println("Hit top");
 						SLOPE_Y *= -1;
-					}else if(BOTTOM_LINE > E.getTopLine()&& LOCATION_Y < E.getTopLine()){
+					}else if(BOTTOM_LINE > E.getTopLine() - 5&& LOCATION_Y < E.getTopLine()-5){
 						System.out.println("Hit bottom");
 						SLOPE_Y *= -1;
 					}
