@@ -4,7 +4,6 @@ import game.Ball;
 import game.Board;
 import game.GameElement;
 import game.Paddle;
-import main.test.GameElementTest;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;

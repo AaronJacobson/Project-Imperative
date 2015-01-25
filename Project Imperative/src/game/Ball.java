@@ -1,9 +1,7 @@
 package game;
 
-import java.util.ArrayList;
-import javafx.geometry.Bounds;
-import javafx.scene.shape.Circle;
 import java.awt.Rectangle;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -49,7 +47,6 @@ public class Ball extends GameElement {
 	}
 	
 	public void collisionTest() {
-		ArrayList<GameElement> elements = BOARD.getGameElements();
 		for(GameElement E : BOARD.getGameElements()) {
 			if(E != this){
 				Rectangle myBounds = new Rectangle(LOCATION_X,LOCATION_Y,SIZE_X,SIZE_Y);

@@ -1,6 +1,5 @@
 package gameStates;
 
-import game.Paddle;
 import lan.Client;
 import lan.Server;
 import main.Main;

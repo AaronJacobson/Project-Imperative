@@ -1,5 +1,7 @@
 package lan;
 
+import gameStates.PongGame;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -58,9 +60,9 @@ public class Server {
 				SERVER_CLIENT_CONNECTIONS.add(newConnect);
 				newConnect.start();
 				if(IPS.size() == 1){
-					main.Main.MainGame.paddle1.setName(SOCKET.getInetAddress().toString());
+					PongGame.paddle1.setName(SOCKET.getInetAddress().toString());
 				}else if(IPS.size() == 2){
-					main.Main.MainGame.paddle2.setName(SOCKET.getInetAddress().toString());
+					PongGame.paddle2.setName(SOCKET.getInetAddress().toString());
 				}
 			} catch (IOException e) {
 				System.out.println("Server: I lost connection to the network.");

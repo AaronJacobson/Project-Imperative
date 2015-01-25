@@ -1,17 +1,14 @@
 package lan;
 
-import game.Paddle;
 import gameStates.PongGame;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Scanner;
 
-import controls.keyboardControls;
 import main.Main;
+import controls.keyboardControls;
 
 public class ClientToServerConnection extends Thread{
 	private DataOutputStream DATA_OUT;
@@ -51,9 +48,9 @@ public class ClientToServerConnection extends Thread{
 			int eventLength = messageScanner.nextInt();
 			System.out.println("ClientToServerConnection: " + eventID + " " + eventLength);
 		}else if(theCommand.equals(Server.COM_START)){
-			main.Main.MainGame.paddle1.setName(messageScanner.next());
-			main.Main.MainGame.paddle2.setName(messageScanner.next());
-			main.Main.MainGame.playerControls = new keyboardControls(main.Main.MainGame.PADDLES[messageScanner.nextInt()]);
+			PongGame.paddle1.setName(messageScanner.next());
+			PongGame.paddle2.setName(messageScanner.next());
+			main.Main.MainGame.playerControls = new keyboardControls(PongGame.PADDLES[messageScanner.nextInt()]);
 			System.out.println("wubz wubz wubz");
 			Main.Game.enterState(1);
 		}
