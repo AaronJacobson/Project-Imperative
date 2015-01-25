@@ -1,5 +1,8 @@
 package gameStates;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import lan.Client;
 import lan.Server;
 import main.Main;
@@ -41,7 +44,11 @@ public class StartScreen extends BasicGameState {
 				Main.SERVER = new Server();
 				Main.CLIENT = new Client();
 				Main.SERVER.startServer();
-				Main.CLIENT.connectToServer("127.0.0.1");
+				try {
+					Main.CLIENT.connectToServer(InetAddress.getLocalHost().toString());
+				} catch (UnknownHostException e) {
+					System.out.println("StartScreen: Not connected to any network.");
+				}
 				Main.SERVER.waitForPlayers();
 			}else {
 				System.exit(0);

@@ -106,7 +106,6 @@ public class GameElement {
 	}
 	
 	public void setLocation(int newX,int newY){
-		System.out.println("GameElement: " + NAME);
 		LOCATION_X = newX;
 		LOCATION_Y = newY;
 	}

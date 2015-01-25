@@ -37,7 +37,6 @@ public class ClientToServerConnection extends Thread{
 		String theCommand = messageScanner.next();
 		if(theCommand.equals(Server.COM_COORDS)){
 			String name = messageScanner.next();
-			System.out.println("ClientToServerConnection: " + name);
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
 			PongGame.board.getElement(name).setLocation(xLocation, yLocation);
