@@ -18,7 +18,7 @@ public class Server {
 	public static final String COM_EVENT = "NEW_EVENT";
 	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID" + " " + "eventLength(in seconds)";
 	public static final String COM_START = "START_GAME";
-	public static final String EX_COM_START = COM_START + " " + "paddle1Name" + " " + "paddle2Name";
+	public static final String EX_COM_START = COM_START + " " + "paddle1Name" + " " + "paddle2Name" + " " + "playerNumber";
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;
@@ -35,7 +35,7 @@ public class Server {
 	public void startServer(){
 		try {
 			System.out.println("Server: I'm booting up. On the ip address of " + InetAddress.getLocalHost().getHostAddress());
-		} catch (UnknownHostException e1) {
+		} catch (UnknownHostException e) {
 			System.out.println("Server: Unable to connect to a network.");
 		}
 		try {
@@ -66,12 +66,22 @@ public class Server {
 				System.out.println("Server: I lost connection to the network.");
 			}
 		}
-		sendToAll(COM_START + " " + IPS.get(0)+ " " + IPS.get(1));
+		sendStart();
+	}
+	
+	public void sendStart(){
+		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
+			C.sendStart(COM_START + " " + IPS.get(0)+ " " + IPS.get(1));
+		}
 	}
 	
 	public void sendToAll(String toSend){
 		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
 			C.sendCommand(toSend);
 		}
+	}
+	
+	public ArrayList<ServerToClientConnection> getConnections(){
+		return SERVER_CLIENT_CONNECTIONS;
 	}
 }

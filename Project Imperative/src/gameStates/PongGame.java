@@ -23,12 +23,16 @@ public class PongGame extends BasicGameState{
 	private GameElement leftWall = new GameElement(board, 15, 700, 0, 0);
 	private GameElement rightWall = new GameElement(board, 15, 700, 485, 0);
 	public keyboardControls playerControls;
+	public static Paddle[] PADDLES;
 	public static Paddle paddle1;
 	public static Paddle paddle2;
 	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
-		paddle1 = new Paddle(board, 50, 680);	
+		PADDLES = new Paddle[2];
+		paddle1 = new Paddle(board, 50, 680);
 		paddle2 = new Paddle(board, 50, 0);
+		PADDLES[0] = paddle1;
+		PADDLES[1] = paddle2;
 	}
 
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {

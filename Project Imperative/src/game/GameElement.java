@@ -1,5 +1,7 @@
 package game;
 
+import lan.Server;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -70,6 +72,7 @@ public class GameElement {
 	public void moveSelf(int x, int y) {
 		LOCATION_X = x;
 		LOCATION_Y = y;
+		main.Main.CLIENT.sendMessage(Server.COM_COORDS + " " + NAME + " " + LOCATION_X + " " + LOCATION_Y);
 		updateBounds();
 	}
 	
