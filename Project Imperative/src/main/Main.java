@@ -1,14 +1,20 @@
 package main;
 
+import lan.Client;
+import lan.Server;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
 import gameStates.PongGame;
 import gameStates.StartScreen;
 
 public class Main extends StateBasedGame{
 	public static Main Game = new Main("Game");
+	public static Server SERVER;
+	public static Client CLIENT;
 	public StartScreen OptionMenu = new StartScreen();
 	public PongGame MainGame = new PongGame();
 	
