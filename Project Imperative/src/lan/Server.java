@@ -68,6 +68,11 @@ public class Server {
 				System.out.println("Server: I lost connection to the network.");
 			}
 		}
+		try {
+			PongGame.paddle1.setName(InetAddress.getLocalHost().toString());
+		} catch (UnknownHostException e) {
+			System.out.println("Server: Lost connection to the network.");
+		}
 		System.out.println("Server: Starting game.");
 		sendStart();
 	}
