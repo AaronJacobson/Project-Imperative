@@ -12,7 +12,6 @@ public class ServerToClientConnection extends Thread{
 	private Server SERVER;
 	private DataOutputStream DATA_OUT;
 	private DataInputStream DATA_IN;
-	private InterpretClientMessageThread INTERPRET_THREAD;
 	private InetAddress IP;
 
 	public ServerToClientConnection(Server server,DataOutputStream dataOut, DataInputStream dataIn,InetAddress ip){
@@ -20,14 +19,13 @@ public class ServerToClientConnection extends Thread{
 		DATA_OUT = dataOut;
 		DATA_IN = dataIn;
 		IP = ip;
-		INTERPRET_THREAD = new InterpretClientMessageThread(this);
 	}
 	public void run(){
 		while(true){
 			try {
 				String message = DATA_IN.readUTF();
-				INTERPRET_THREAD.setMessage(message);
-				INTERPRET_THREAD.start();
+				InterpretClientMessageThread intperpretMessage = new InterpretClientMessageThread(message,this);
+				intperpretMessage.start();
 			} catch (IOException e) {
 				System.out.println("ServerToClientConnection: I have lost connection to the client, either you have lost connection to the network or they did.");
 				break;
@@ -72,7 +70,8 @@ class InterpretClientMessageThread extends Thread{
 	private String MESSAGE;
 	private ServerToClientConnection SERVER_TO_CLIENT_CONNECTION;
 	
-	public InterpretClientMessageThread(ServerToClientConnection clientConnection){
+	public InterpretClientMessageThread(String message,ServerToClientConnection clientConnection){
+		MESSAGE = message;
 		SERVER_TO_CLIENT_CONNECTION = clientConnection;
 	}
 	
