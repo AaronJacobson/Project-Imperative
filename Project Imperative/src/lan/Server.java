@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Server {
 	public static final int PORT_NUMBER = 41800;
-	public static final int NUMBER_OF_PLAYERS = 2;
+	public static final int NUMBER_OF_PLAYERS = 1;
 	public static final String COM_COORDS = "HERE_ARE_SOME_COORDS";
 	public static final String EX_COM_COORDS = COM_COORDS + " label yValue xValue";
 	public static final String COM_EVENT = "NEW_EVENT";
@@ -75,7 +75,11 @@ public class Server {
 	public void sendStart(){
 		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
 			System.out.println("Server: sending stuff");
-			C.sendStart(COM_START + " " + IPS.get(0)+ " " + IPS.get(1));
+			String toSend = COM_START;
+			for(String I : IPS){
+				toSend += " " + I;
+			}
+			C.sendStart(toSend);
 		}
 	}
 	

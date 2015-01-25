@@ -25,6 +25,8 @@ public class PongGame extends BasicGameState{
 	public static Paddle[] PADDLES;
 	public static Paddle paddle1;
 	public static Paddle paddle2;
+	public static Paddle paddle3;
+	public static Paddle paddle4;
 	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
 		PADDLES = new Paddle[2];
