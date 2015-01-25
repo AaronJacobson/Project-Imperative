@@ -5,6 +5,14 @@ import java.util.ArrayList;
 public class Board {
 	ArrayList<GameElement> ELEMENTS;
 	
+	public GameElement getElement(String Name){
+		for(GameElement E : ELEMENTS){
+			if(Name.equals(E.getName())){
+				return E;
+			}
+		}
+		return null;
+	}
 	public Board() {
 		ELEMENTS = new ArrayList<GameElement>();
 	}

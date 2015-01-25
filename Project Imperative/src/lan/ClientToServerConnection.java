@@ -1,5 +1,7 @@
 package lan;
 
+import gameStates.PongGame;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -31,9 +33,10 @@ public class ClientToServerConnection extends Thread{
 		Scanner messageScanner = new Scanner(message);
 		String theCommand = messageScanner.next();
 		if(theCommand.equals(Server.COM_COORDS)){
-			String label = messageScanner.next();
+			String name = messageScanner.next();
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
+			PongGame.board.getElement(name).setLocation(xLocation, yLocation);
 		}else if(theCommand.equals(Server.COM_EVENT)){
 			int eventID = messageScanner.nextInt();
 			int eventLength = messageScanner.nextInt();

@@ -13,9 +13,11 @@ public class Paddle extends GameElement {
 	
 	public void moveLeft(int delta){
 		LOCATION_X -= 1 * delta;
+		main.Main.CLIENT.sendMessage(main.Main.SERVER.COM_COORDS + " " + this.NAME + " " + this.LOCATION_X + " " + this.LOCATION_Y);
 	}
 	
 	public void moveRight(int delta){
 		LOCATION_X += 1 * delta;
+		main.Main.CLIENT.sendMessage(main.Main.SERVER.COM_COORDS + " " + this.NAME + " " + this.LOCATION_X + " " + this.LOCATION_Y);
 	}
 }

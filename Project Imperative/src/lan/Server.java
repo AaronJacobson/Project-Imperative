@@ -18,14 +18,14 @@ public class Server {
 	public static final String COM_EVENT = "NEW_EVENT";
 	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID" + " " + "eventLength(in seconds)";
 	public static final String COM_START = "START_GAME";
-	public static final String EX_COM_START = COM_START;
+	public static final String EX_COM_START = COM_START + " " + "paddle1Name" + " " + "paddle2Name";
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;
 	private DataOutputStream DATA_OUT;
 	private DataInputStream DATA_IN;
 	private ArrayList<ServerToClientConnection> SERVER_CLIENT_CONNECTIONS;
-	private ArrayList<String> IPS;
+	public ArrayList<String> IPS;
 	
 	public Server(){
 		SERVER_CLIENT_CONNECTIONS = new ArrayList<>();
