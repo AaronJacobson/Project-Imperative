@@ -37,9 +37,6 @@ public class ClientToServerConnection extends Thread{
 		String theCommand = messageScanner.next();
 		if(theCommand.equals(Server.COM_COORDS)){
 			String name = messageScanner.next();
-			if(name.startsWith("/")){
-				System.out.println(name);
-			}
 			int xLocation = messageScanner.nextInt();
 			int yLocation = messageScanner.nextInt();
 			PongGame.board.getElement(name).setLocation(xLocation, yLocation);
@@ -60,7 +57,7 @@ public class ClientToServerConnection extends Thread{
 		try {
 			DATA_OUT.writeUTF(toSend);
 		} catch (IOException e) {
-			System.out.println("ClientToServerConnection: Unable to communicate with the server.");
+//			System.out.println("ClientToServerConnection: Unable to communicate with the server.");
 		}
 	}
 }
