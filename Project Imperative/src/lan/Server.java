@@ -69,7 +69,7 @@ public class Server {
 			}
 		}
 		try {
-			PongGame.paddle1.setName(InetAddress.getLocalHost().toString());
+			PongGame.paddle1.setName(InetAddress.getLocalHost().getHostAddress());
 		} catch (UnknownHostException e) {
 			System.out.println("Server: Lost connection to the network.");
 		}
@@ -80,7 +80,7 @@ public class Server {
 	public void sendStart(){
 		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
 			String toSend = COM_START;
-			toSend += PongGame.paddle1.getName() + " ";
+			toSend += " " + PongGame.paddle1.getName() + " ";
 			toSend += IPS.get(1);
 			C.sendStart(toSend);
 		}
