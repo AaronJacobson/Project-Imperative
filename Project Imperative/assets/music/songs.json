@@ -2,6 +2,7 @@
     {
         "name": "little bouncing ball",
         "stemDir": "little-bouncing-ball",
+        "intervalSeconds": 30,
         "layers": [
             {
                 "name": "bass",
