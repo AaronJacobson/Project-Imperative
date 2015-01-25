@@ -47,9 +47,9 @@ public class ServerToClientConnection extends Thread{
 	
 	public void sendToEveryoneElse(String toSend){
 		for(ServerToClientConnection C : SERVER.getConnections()){
-			if(C != this){
+//			if(C != this){
 				sendCommand(toSend);
-			}
+//			}
 		}
 	}
 	
