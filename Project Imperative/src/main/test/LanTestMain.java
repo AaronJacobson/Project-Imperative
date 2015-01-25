@@ -1,4 +1,4 @@
-package main;
+package main.test;
 
 import lan.Client;
 import lan.Server;

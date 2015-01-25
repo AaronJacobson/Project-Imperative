@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
+import main.Main;
+
 public class ClientToServerConnection extends Thread{
 	private DataOutputStream DATA_OUT;
 	private DataInputStream DATA_IN;
@@ -36,6 +38,8 @@ public class ClientToServerConnection extends Thread{
 			int eventID = messageScanner.nextInt();
 			int eventLength = messageScanner.nextInt();
 			System.out.println("ClientToServerConnection: " + eventID + " " + eventLength);
+		}else if(theCommand.equals(Server.COM_START)){
+			Main.Game.enterState(1);
 		}
 		messageScanner.close();
 	}

@@ -17,6 +17,8 @@ public class Server {
 	public static final String EX_COM_COORDS = COM_COORDS + " label yValue xValue";
 	public static final String COM_EVENT = "NEW_EVENT";
 	public static final String EX_COM_EVENT = COM_EVENT + " " + "eventID" + " " + "eventLength(in seconds)";
+	public static final String COM_START = "START_GAME";
+	public static final String EX_COM_START = COM_START;
 	
 	private ServerSocket SERVER_SOCKET;
 	private Socket SOCKET;
@@ -59,6 +61,7 @@ public class Server {
 				System.out.println("Server: I lost connection to the network.");
 			}
 		}
+		sendToAll(COM_START);
 	}
 	
 	public void sendToAll(String toSend){
