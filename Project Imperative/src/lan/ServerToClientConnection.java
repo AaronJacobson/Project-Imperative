@@ -56,6 +56,7 @@ public class ServerToClientConnection extends Thread{
 	}
 	
 	public void sendStart(String toSend){
+		System.out.println("ServerToClientConnction: sending " + toSend + " " + SERVER.IPS.indexOf(IP.toString()));
 		sendCommand(toSend + " " + SERVER.IPS.indexOf(IP.toString()));
 	}
 

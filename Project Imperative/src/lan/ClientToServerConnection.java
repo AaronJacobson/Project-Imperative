@@ -29,6 +29,7 @@ public class ClientToServerConnection extends Thread{
 			try {
 				String message = DATA_IN.readUTF();
 				INTERPRET_MESSAGE.setMessage(message);
+				INTERPRET_MESSAGE.start();
 			} catch (IOException e) {
 				System.out.println("ClientToServerConnection: Lost connection to the server, either you lost connection to the network, or they did.");
 				break;
@@ -39,6 +40,7 @@ public class ClientToServerConnection extends Thread{
 	public void interpretMessage(String message){
 		Scanner messageScanner = new Scanner(message);
 		String theCommand = messageScanner.next();
+		System.out.println(message);
 		if(theCommand.equals(Server.COM_COORDS)){
 			String name = messageScanner.next();
 			int xLocation = messageScanner.nextInt();
@@ -52,13 +54,13 @@ public class ClientToServerConnection extends Thread{
 			main.Main.MainGame.paddle1.setName(messageScanner.next());
 			main.Main.MainGame.paddle2.setName(messageScanner.next());
 			main.Main.MainGame.playerControls = new keyboardControls(main.Main.MainGame.PADDLES[messageScanner.nextInt()]);
+			System.out.println("wubz wubz wubz");
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();
 	}
 	
 	public void sendMessage(String toSend){
-		System.out.println("ClientToServerConnection: Sending " + toSend);
 		try {
 			DATA_OUT.writeUTF(toSend);
 		} catch (IOException e) {

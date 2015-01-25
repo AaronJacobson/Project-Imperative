@@ -66,11 +66,13 @@ public class Server {
 				System.out.println("Server: I lost connection to the network.");
 			}
 		}
+		System.out.println("Server: Starting game.");
 		sendStart();
 	}
 	
 	public void sendStart(){
 		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
+			System.out.println("Server: sending stuff");
 			C.sendStart(COM_START + " " + IPS.get(0)+ " " + IPS.get(1));
 		}
 	}
