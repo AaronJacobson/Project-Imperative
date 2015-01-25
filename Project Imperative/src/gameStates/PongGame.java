@@ -3,6 +3,7 @@ package gameStates;
 import game.Ball;
 import game.Board;
 import game.GameElement;
+import game.Paddle;
 import main.test.GameElementTest;
 
 import org.newdawn.slick.Color;
@@ -11,6 +12,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import controls.keyboardControls;
 
 public class PongGame extends BasicGameState{
 	Board board = new Board();
@@ -21,38 +24,28 @@ public class PongGame extends BasicGameState{
 //	private Ball ball5 = new Ball(board, 10, 300, 340,4,1,5);
 	private GameElement leftWall = new GameElement(board, 15, 700, 0, 0);
 	private GameElement rightWall = new GameElement(board, 15, 700, 485, 0);
-	private GameElement bottomWall = new GameElement(board, 500, 15, 0, 685);
 	private GameElement topWall = new GameElement(board, 500, 15, 0, 0);
+	private keyboardControls playerControls;
+	private Paddle paddle1;
 	
 	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
-		
+		paddle1 = new Paddle(board, 50, 680);
+		playerControls = new keyboardControls(paddle1);
 	}
 
 	public void render(GameContainer container, StateBasedGame arg1, Graphics g) throws SlickException {
 		ball.draw(g);
 		ball.setColor(Color.blue);
-//		ball2.draw(g);
-//		ball2.setColor(Color.gray);
-//		ball3.draw(g);
-//		ball3.setColor(Color.magenta);
-//		ball4.draw(g);
-//		ball3.setColor(Color.red);
-//		ball5.draw(g);
-		
 		ball.updateLocation();
-//		ball2.moveSelf();
-//		ball3.moveSelf();
-//		ball4.moveSelf();
-//		ball5.moveSelf();
 		
 		leftWall.draw(g);
 		rightWall.draw(g);
-		bottomWall.draw(g);
 		topWall.draw(g);
+		paddle1.draw(g);
 	}
 
-	public void update(GameContainer container, StateBasedGame arg1, int arg2) throws SlickException {	
-
+	public void update(GameContainer container, StateBasedGame arg1, int delta) throws SlickException {	
+		playerControls.handleInput(container.getInput(), delta);
 	}
 
 	public int getID() {
