@@ -49,13 +49,11 @@ public class ClientToServerConnection extends Thread{
 		}else if(theCommand.equals(Server.COM_START)){
 			main.Main.MainGame.paddle1.setName(messageScanner.next());
 			main.Main.MainGame.paddle2.setName(messageScanner.next());
-			System.out.println(((Paddle) main.Main.MainGame.board.getElement(InetAddress.getLocalHost().getHostAddress())).getName());
-			try {
-				main.Main.MainGame.playerControls = new keyboardControls((Paddle) main.Main.MainGame.board.getElement(InetAddress.getLocalHost().getHostAddress()));
-			} catch (UnknownHostException e) {
-				System.out.println("ClientToServerConnection: No connection to the network.");
+			if(main.Main.SERVER != null){
+				main.Main.MainGame.playerControls = new keyboardControls(main.Main.MainGame.paddle2);
+			}else{
+				main.Main.MainGame.playerControls = new keyboardControls(main.Main.MainGame.paddle1);
 			}
-			System.out.println("wubz");
 			Main.Game.enterState(1);
 		}
 		messageScanner.close();
