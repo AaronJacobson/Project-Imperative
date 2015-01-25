@@ -79,11 +79,9 @@ public class Server {
 	
 	public void sendStart(){
 		for(ServerToClientConnection C : SERVER_CLIENT_CONNECTIONS){
-			System.out.println("Server: sending stuff");
 			String toSend = COM_START;
-			for(String I : IPS){
-				toSend += " " + I;
-			}
+			toSend += PongGame.paddle1.getName() + " ";
+			toSend += IPS.get(1);
 			C.sendStart(toSend);
 		}
 	}
